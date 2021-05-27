@@ -9,6 +9,11 @@ test("not found for site 404", async function () {
   expect(resp.statusCode).toEqual(404);
 });
 
+test("200 for found site", async function () {
+  const res = await request(app).get('/companies');
+  expect(res.statusCode).toEqual(200);
+});
+
 test("not found for site 404 (test stack print)", async function () {
   process.env.NODE_ENV = "";
   const resp = await request(app).get("/no-such-path");
